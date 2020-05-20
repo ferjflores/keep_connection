@@ -57,8 +57,9 @@ def reset(url, pw):
     driver.close()
     return message
 
+
 def check_dns_resolution(hostname):
-    message = ''
+    message = 'DNS resolution working'
     try:
         socket.gethostbyname(hostname)
         return True, message

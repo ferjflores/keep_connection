@@ -34,8 +34,9 @@ class App:
         i = 0
         while True:
             check_dns, message = check_dns_resolution(REMOTE_SERVER_NAME)
+            logger.info(message)
             check_connection, message = is_connected(REMOTE_SERVER_IP)
-            logger.info()
+            logger.info(message)
 
             if not check_connection and self.restart:
                 logger.warning("reset connection")
