@@ -7,8 +7,8 @@ from library import check_dns_resolution, is_connected, reset
 
 REMOTE_SERVER_NAME = "one.one.one.one"
 REMOTE_SERVER_IP = "1.1.1.1"
-DEFAULT_ROUTER_URL = "http://localhost:9080"
-# DEFAULT_ROUTER_URL = "http://192.168.88.1"
+# DEFAULT_ROUTER_URL = "http://localhost:9080"
+DEFAULT_ROUTER_URL = "http://192.168.88.1"
 DEFAULT_ADMIN_PW = "admin"
 
 
@@ -28,13 +28,14 @@ class App:
         self.pidfile_timeout = 5
         self.url = DEFAULT_ROUTER_URL
         self.password = DEFAULT_ADMIN_PW
-        self.restart = False
+        self.restart = True
 
     def run(self):
         i = 0
         while True:
             check_dns, message = check_dns_resolution(REMOTE_SERVER_NAME)
             check_connection, message = is_connected(REMOTE_SERVER_IP)
+            logger.info()
 
             if not check_connection and self.restart:
                 logger.warning("reset connection")

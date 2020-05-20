@@ -68,10 +68,10 @@ def check_dns_resolution(hostname):
 
 
 def is_connected(host):
-    message = ''
     try:
         s = socket.create_connection((host, 80), 2)
         s.close()
+        message = 'Connected to host {} port {}'.format(host, 80)
         return True, message
     except Exception as error:
         message = error
